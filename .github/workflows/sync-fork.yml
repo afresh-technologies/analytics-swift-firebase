@@ -1,0 +1,17 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '0 5 * * *' # at 5am
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tgymnich/fork-sync@v1.6.3
+        with:
+          owner: segment-integrations
+          base: main
+          head: main
+          pr_title: Update from Upstream
